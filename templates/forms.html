@@ -1,0 +1,60 @@
+<ion-view title="Forms">
+    <ion-content padding="true" class="has-footer">
+        <div class="transparent">
+            <h3>
+                Leave a message
+            </h3>
+            Please don't hesitate to leave us a message! 
+        </div>
+        <form style="margin-top:10px" method="post" action="http://mobile.madewithpepper.com/api/v1/widget/post/forms/postForm" id="frm5" novalidate>
+            <input type="hidden" name="sl" value="eyJpdiI6IkxLUFprd0tWV0dTalVyQktXSUg2SVE9PSIsInZhbHVlIjoiaDk2bmx5eEFXYnN2UE0rc09tM0hcL3d1elF2b0Q5UUVWQVpZTnpQYUoxTDQ9IiwibWFjIjoiODAwNWJiNWQ4NmZjNzcwMzNhMDFkNGVmOTZiN2E5MzdhODAzNDNmYmE5YjRmOTQwNmEyNmVjYjcyOTcyYzY2ZiJ9">
+            <div class="list">
+                <textarea name="el-0[]" style="display:none">Name</textarea>
+                <input type="hidden" name="el-required[0]" value="1">
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input type="text" name="el-0[]">
+                </label>
+                <textarea name="el-1[]" style="display:none">E-mail</textarea>
+                <input type="hidden" name="el-required[1]" value="1">
+                <label class="item item-input">
+                    <span class="input-label">E-mail</span>
+                    <input type="email" name="el-1[]">
+                </label>
+                <textarea name="el-2[]" style="display:none">Message</textarea>
+                <input type="hidden" name="el-required[2]" value="1">
+                <label class="item item-input">
+                    <span class="input-label">Message</span>
+                    <textarea rows="4" name="el-2[]"></textarea>
+                </label>
+            </div>
+            <button class="button button-block button-positive" type="submit">Submit</button>
+        </form>
+    </ion-content>
+</ion-view>
+<script>
+$('#frm5').on('submit', function() {
+
+	angular.element($('ion-view')).injector().get("$ionicLoading").show();
+
+	$.ajax({
+		type: 'POST',
+		url: $(this).attr('action'),
+		data: $(this).serialize(),
+		dataType: 'json',
+		success: function(data)
+		{
+			$('#frm5')[0].reset();
+			angular.element($('ion-view')).injector().get("$ionicPopup").alert({
+				title: "Forms",
+				template: data.msg,
+				okText: "OK"
+			});
+		}
+	}).always(function() {
+		angular.element($('ion-view')).injector().get("$ionicLoading").hide();
+	});;
+
+	return false;
+});
+</script>

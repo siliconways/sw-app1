@@ -1,0 +1,105 @@
+<ion-view title="E-Commerce">
+    <ion-nav-buttons side="secondary">
+        <button class="button icon-left" ng-click="checkoutService.showModal()"> <i class="icon ion-bag"></i> </button>
+        &nbsp; 
+        <button class="button simpleCart_total shop_price" ng-click="checkoutService.showModal()"></button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-footer" ng-controller="eCommerceCtrl">
+        <div class="list">
+            <a href="javascript:void(0);" ng-click="showDetails('simpleCart-0')" class="item item-text-wrap item-avatar item-button-right">
+                <img src="../img/e-commerce/160-160-sport_large.jpg">
+                <h2>
+                    Watch Sport
+                </h2>
+                <p class="item_price">400</p>
+                <div class="button button-positive" style="margin-top:12px"><i class="icon ion-search"></i></div>
+            </a>
+            <a href="javascript:void(0);" ng-click="showDetails('simpleCart-1')" class="item item-text-wrap item-avatar item-button-right">
+                <img src="../img/e-commerce/160-160-primary_large.jpg">
+                <h2>
+                    Watch Primary
+                </h2>
+                <p class="item_price">500</p>
+                <div class="button button-positive" style="margin-top:12px"><i class="icon ion-search"></i></div>
+            </a>
+            <a href="javascript:void(0);" ng-click="showDetails('simpleCart-2')" class="item item-text-wrap item-avatar item-button-right">
+                <img src="../img/e-commerce/160-160-edition_large.jpg">
+                <h2>
+                    Watch Edition
+                </h2>
+                <p class="item_price">1000</p>
+                <div class="button button-positive" style="margin-top:12px"><i class="icon ion-search"></i></div>
+            </a>
+        </div>
+        <script id="productsimpleCart-0.html" type="text/ng-template"> <ion-modal-view class="simpleCart_shelfItem"> <ion-header-bar> <h1 class="title">Watch Sport</h1> <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div> </ion-header-bar> <ion-content> <div class="item tabs tabs-secondary dark tabs-icon-left"> <a class="tab-item" href="javascript:void(0);" ng-click="checkoutService.showModal()"> <i class="icon ion-bag"></i> Checkout (<span class="simpleCart_quantity"></span>) </a> <label class="tab-item item-input"> Qty <input type="number" value="1" min="1" class="item_Quantity" style="text-align:center;width:100%"> </label> <a class="tab-item item_add" href="javascript:alert('Item(s) added');"> <i class="icon ion-ios-cart"></i> Add to basket </a> </div> <div class="item_price badge badge-calm" style="float:right;margin:15px">400</div><div class="padding"><h3 class="item_name">Watch Sport</h3><img src="../img/e-commerce/sport_large.jpg" class="full-image"></div> </ion-content> </ion-modal-view> </script>
+        <script id="productsimpleCart-1.html" type="text/ng-template"> <ion-modal-view class="simpleCart_shelfItem"> <ion-header-bar> <h1 class="title">Watch Primary</h1> <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div> </ion-header-bar> <ion-content> <div class="item tabs tabs-secondary dark tabs-icon-left"> <a class="tab-item" href="javascript:void(0);" ng-click="checkoutService.showModal()"> <i class="icon ion-bag"></i> Checkout (<span class="simpleCart_quantity"></span>) </a> <label class="tab-item item-input"> Qty <input type="number" value="1" min="1" class="item_Quantity" style="text-align:center;width:100%"> </label> <a class="tab-item item_add" href="javascript:alert('Item(s) added');"> <i class="icon ion-ios-cart"></i> Add to basket </a> </div> <div class="item_price badge badge-calm" style="float:right;margin:15px">500</div><div class="padding"><h3 class="item_name">Watch Primary</h3><img src="../img/e-commerce/primary_large.jpg" class="full-image"></div> </ion-content> </ion-modal-view> </script>
+        <script id="productsimpleCart-2.html" type="text/ng-template"> <ion-modal-view class="simpleCart_shelfItem"> <ion-header-bar> <h1 class="title">Watch Edition</h1> <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div> </ion-header-bar> <ion-content> <div class="item tabs tabs-secondary dark tabs-icon-left"> <a class="tab-item" href="javascript:void(0);" ng-click="checkoutService.showModal()"> <i class="icon ion-bag"></i> Checkout (<span class="simpleCart_quantity"></span>) </a> <label class="tab-item item-input"> Qty <input type="number" value="1" min="1" class="item_Quantity" style="text-align:center;width:100%"> </label> <a class="tab-item item_add" href="javascript:alert('Item(s) added');"> <i class="icon ion-ios-cart"></i> Add to basket </a> </div> <div class="item_price badge badge-calm" style="float:right;margin:15px">1000</div><div class="padding"><h3 class="item_name">Watch Edition</h3><img src="../img/e-commerce/edition_large.jpg" class="full-image"></div> </ion-content> </ion-modal-view> </script>
+    </ion-content>
+</ion-view>
+<script id="checkout.html" type="text/ng-template">
+	<ion-modal-view>
+		<ion-header-bar>
+			<h1 class="title">Cart</h1>
+			<div class="button button-clear" ng-click="modal.hide()">
+				<span class="icon ion-close"></span>
+			</div>
+		</ion-header-bar>
+		<ion-content>
+			<div class="padding">
+				<div class="simpleCart_items"></div>
+				<div class="simpleCart_totals">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td>
+									Subtotal:
+								</td>
+								<td width="130">
+									<span class="simpleCart_total shop_price"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Tax (<span class="simpleCart_taxRate taxRate"></span>%):
+								</td>
+								<td>
+									<span class="simpleCart_tax shop_price"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Shipping:
+								</td>
+								<td>
+									<span class="simpleCart_shipping shop_price"></span>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<hr>
+									</td>
+								</tr>
+								<tr>
+									<td>
+									Total:
+								</td>
+									<td>
+										<span class="simpleCart_grandTotal shop_price"></span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				<button class="button button-balanced icon-left button-block simpleCart_checkout">
+					Proceed to payment <i class="icon ion-arrow-right-c"></i>
+				</button>
+				</div>
+			</ion-content>
+		</ion-modal-view>
+	</script>
+<script>
+	simpleCart({
+		checkout: {
+			type: "PayPal",
+			email: "info@s3m.nl",
+			sandbox: false, method: "GET", success: "http://mobile.madewithpepper.com/api/v1/widget/get/e-commerce/paymentSuccess?sl=eyJpdiI6IkIxZU1aSmRFQjVFbHhIdVdNR1wvYWxBPT0iLCJ2YWx1ZSI6IjZVUUhoSkFLTlVEY1lZbEdld21Pb2xQMzloK2FQY2Z2NCtIRFwvbyt1ZkUwPSIsIm1hYyI6ImJiYzViN2ZhNzRkMDkzYzdiOGUyMWE3MGNhODY0MGQ4NzEyYWE4YjliYmZlYTQwYTQyMGZjMTBiY2UyZjQ2ZmUifQ%3D%3D", cancel: "http://mobile.madewithpepper.com/api/v1/widget/get/e-commerce/paymentCancel?sl=eyJpdiI6IkIxZU1aSmRFQjVFbHhIdVdNR1wvYWxBPT0iLCJ2YWx1ZSI6IjZVUUhoSkFLTlVEY1lZbEdld21Pb2xQMzloK2FQY2Z2NCtIRFwvbyt1ZkUwPSIsIm1hYyI6ImJiYzViN2ZhNzRkMDkzYzdiOGUyMWE3MGNhODY0MGQ4NzEyYWE4YjliYmZlYTQwYTQyMGZjMTBiY2UyZjQ2ZmUifQ%3D%3D" }, cartStyle: "table", currency: "USD", /* collection of arbitrary data you may want to store with the cart, such as customer info data: {},*/ language: "en", excludeFromCheckout: [], /* custom function to add shipping cost */ shippingCustom: null, shippingFlatRate: 0, shippingQuantityRate: 0, shippingTotalRate: 0.00, taxRate: 0, taxShipping: true, beforeAdd : null, afterAdd : null, load : null, beforeSave : null, afterSave : null, update : null, ready : null, checkoutSuccess : null, checkoutFail : null, beforeCheckout : null, cartColumns: [ { attr: "name" , label: "Title" } , { attr: "price" , label: "Price", view: 'currency' } , { view: "decrement" , label: false , text: '<span class="button button-small">-</span>' } , { attr: "quantity" , label: "Qty" } , { view: "increment" , label: false , text: '<span class="button button-small">+</span>' } , { attr: "total" , label: "Subtotal", view: 'currency' } , { view: "remove" , text: '<span class="button button-small button-assertive">&times;</span>', label: false } ] });</script>
